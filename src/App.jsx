@@ -61,7 +61,7 @@ function App() {
             and a minor in Biological Sciences.</p>
           <p>I love programming and problem-solving. So far, my professional interests include software development, 
             software testing and quality assurance, and cybersecurity. </p>
-          <p>Reach out at <a href="mailto:Nieves.L@outlook.com" title="mailto:Nieves.L@outlook.com">Nieves.L@outlook.com</a>. 
+          <p>For business inquiries, feel free to reach out at <a href="mailto:Nieves.L@outlook.com" title="mailto:Nieves.L@outlook.com">Nieves.L@outlook.com</a>. 
             Also, check out my <i class="bi bi-github"></i> <a href="https://www.github.com/LI-Nieves" title="Redirect to github.com/LI-Nieves">GitHub</a> and <i class="bi bi-linkedin"></i> <a href="https://www.linkedin.com/in/lana-nieves/" title="Redirect to linkedin.com/in/lana-nieves/">LinkedIn</a>!</p>
           <p>
           
