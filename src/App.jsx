@@ -1,36 +1,26 @@
 import { useState } from 'react'
 import picOfMe from './assets/me.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import LangButton from './components/LangButton'
+import Skill from './components/Skill'
 
 
-function App() {
-  // const PROGRAM_LANG = [("Java","a"), ("Python","b"), ("C++","q"), ("C","w"), ("C#","e"), 
-  //   ("SQL","r"), ("PHP","t"), ("Haskell","y"), ("HTML","u"), ("CSS","i"), ("JavaScript","o"), ("ARMv8-A64","p")];
-  const PROGRAM_LANG = [
-    { id: "01", name: "Java", proficiency: 5, desc: "Java description."},
-    { id: "02", name: "Python", proficiency: 5, desc: "Python description."},
-    { id: "03", name: "C++", proficiency: 3, desc: "C++ description."},
-    { id: "04", name: "C", proficiency: 3, desc: "C description."},
-    { id: "05", name: "C#", proficiency: 4, desc: "C# description."},
-    { id: "06", name: "SQL", proficiency: 4, desc: "SQL description."},
-    { id: "07", name: "PHP", proficiency: 4, desc: "PHP description."},
-    { id: "08", name: "Haskell", proficiency: 3, desc: "Haskell description."},
-    { id: "09", name: "HTML", proficiency: 4, desc: "HTML description."},
-    { id: "10", name: "CSS", proficiency: 4, desc: "CSS description."},
-    { id: "11", name: "JavaScript", proficiency: 4, desc: "JavaScript description."},
-    { id: "12", name: "ARMv8", proficiency: 3, desc: "ARMv8 description."},
-  ]
+function App(props) {
+  // data
+  const PROGRAM_LANG = props.program_lang;
+  const TECH_SKILLS = props.tech_skills;
+
+  // states
   const [lang, setLang] = useState(0);
 
-  const programmingLanguages = PROGRAM_LANG.map((lang) => (
+  // For programming languages functionality
+  const programmingLanguages = PROGRAM_LANG.map((l) => (
     <LangButton
-      key={lang.id}
-      name={lang.name}
-      proficiency={lang.proficiency}
-      desc={lang.desc}
+      key={l.id}
+      name={l.name}
+      proficiency={l.proficiency}
+      desc={l.desc}
+      isPressed={l.name === lang.name}
       setLang={setLang}
       />
   ))
@@ -39,18 +29,24 @@ function App() {
   if (lang === 0) {
     langDesc = "";
   } else {
-    langDesc = `Proficiency: ${lang.proficiency}/5. ${lang.desc}`;
+    langDesc = `Proficiency: ${lang.proficiency}. ${lang.desc}`;
+  }
+
+  // For tech skills functionality
+  function makeSkills(type) {
+    return TECH_SKILLS
+      .filter((s) => s.type === type)
+      .map((s) => (
+        <Skill
+          key={s.id}
+          name={s.name}
+          />
+      ))
   }
 
   return (
     <>
       <h1>Lee Nieves</h1>
-
-      {/* <div className="icons">
-        <div>Email</div>
-        <div>GitHub</div>
-        <div>LinkedIn</div>
-      </div> */}
 
       <div className="bio">
         <div className="picture">
@@ -62,72 +58,49 @@ function App() {
           <p>I love programming and problem-solving. So far, my professional interests include software development, 
             software testing and quality assurance, and cybersecurity. </p>
           <p>For business inquiries, feel free to reach out at <a href="mailto:Nieves.L@outlook.com" title="mailto:Nieves.L@outlook.com">Nieves.L@outlook.com</a>. 
-            Also, check out my <i class="bi bi-github"></i> <a href="https://www.github.com/LI-Nieves" title="Redirect to github.com/LI-Nieves">GitHub</a> and <i class="bi bi-linkedin"></i> <a href="https://www.linkedin.com/in/lana-nieves/" title="Redirect to linkedin.com/in/lana-nieves/">LinkedIn</a>!</p>
-          <p>
-          
-          </p>
+            Also, check out my <i className="bi bi-github"></i> <a href="https://www.github.com/LI-Nieves" title="Redirect to github.com/LI-Nieves">
+              GitHub</a> and <i className="bi bi-linkedin"></i> <a href="https://www.linkedin.com/in/lana-nieves/" title="Redirect to linkedin.com/in/lana-nieves/">
+              LinkedIn</a>!</p>
         </div>    
       </div>
-
 
       <h2>Skills</h2>
 
       <h3>Programming languages</h3>
       {programmingLanguages}
       <br></br> <br></br>
-      <p>{langDesc}</p>
-      {/* <ul className="doubleColumn">
-        <li>Python</li>
-        <li>Java</li>
-        <li>C++</li>
-        <li>C</li>
-        <li>C#</li>
-        <li>SQL</li>
-        <li>PHP</li>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>PHP</li>
-        <li>ARMv8-A64</li>
-      </ul> */}
+      <p className="progLangDesc">{langDesc}</p>
+
 
       <h3>Technical skills</h3>
-      <div className="icons">
-        <div>
-        <h4>Quality assurance-related</h4>
-        <ul>
-          <li>Automated software testing</li>
-          <li>Manual testing</li>
-          <li>Selenium WebDriver</li>
-          <li>Test plan creation</li>
-          <li>Testing documentation</li>
-        </ul>
+      {/* Card source: https://getbootstrap.com/docs/5.3/components/card/ */}
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">Testing</div>
+                <ul class="list-group list-group-flush">
+                  {makeSkills("testing")}
+                </ul>
+          </div>
         </div>
-        <div>
-        <h4>Frameworks?</h4>
-        <ul>
-          <li>React</li>
-          <li>.NET</li>
-          <li>Unity engine</li>
-        </ul>
+        <div class="col">
+          <div class="card">
+            <div class="card-header">Development</div>
+              <ul class="list-group list-group-flush">
+                {makeSkills("dev")}
+              </ul>
+          </div>
         </div>
-        <div>
-        <h4>Others</h4>
-        <ul>
-          <li>REST API</li>
-          <li>Relational databases</li>
-          <li>Socket programming</li>
-          <li>Networks knowledge</li>
-          <li>Secure coding practices</li>
-          <li>Cryptography</li>
-          <li>Agile/Scrum</li>
-          <li>Behavior-driven development</li>
-        </ul>
+        <div class="col">
+          <div class="card">
+            <div class="card-header">Others</div>
+              <ul class="list-group list-group-flush">
+                {makeSkills("others")}
+              </ul>
+          </div>
         </div>
-        
-
       </div>
-
+      <br></br>
 
       <h3>Software</h3>
       <ul className="doubleColumn">
@@ -180,8 +153,88 @@ function App() {
       <h3>Special-needs Martial Arts Instructor</h3>
       <h4>Hydra Martial Arts, part-time from January 2016 to June 2017</h4>
 
+      <h2>Education</h2>
+      <h3>B.Sc in Computer Science with Distinction and a minor in Biological Sciences</h3>
+      <h4>University of Calgary, from September 2017 to April 2023</h4>
+      <ul>
+        <li>Candidate of the Science Internship Program (two full-time, 12-month internships)</li>
+        <li>Concentration in Information Security</li>
+        <li>Cumulative GPA: 3.90/4.00</li>
+        <li>Awards received: Lockhart Family Computer Science Award (2020), Faculty of Science’s Dean’s List (2018-2021), Jason Lang Scholarship (2018-2020), Undergraduate Merit Award (2018)</li>
+        <li>Selected coursework: Data Structures and Algorithms, Networks Security, Computer Security, Operating Systems, Database Management Systems, Computing Machinery, Statistics</li>
+      </ul>
+
+      <h2>Notable projects and hack-a-thons</h2>
+      <h3>SpeeDine</h3>
+      <h4>Developed in HTML, CSS, and the Blazor framework (C#) using object-oriented design, from Jan 2022 to April 2022</h4>
+      <ul>
+        <li>Web application that optimizes dining experience; allows customers to order items through the app and more</li>
+        <li>Designed and implemented the UI with Task-Centered System Design principles and prototyping</li>
+      </ul>
+      <h3>Hotel Management website</h3>
+      <h4>Developed using PHP, CSS, HTML, and JavaScript; connected to a MySQL database</h4>
+      <ul>
+        <li>Website with guest functionality (e.g., reserve room) and employee functionality (e.g., view room status)</li>
+        <li>Prevented SQL injections while developing the back-end through secure coding practices </li>
+      </ul>
+
+      <h2>LICENSES & CERTIFICATIONS</h2>
+      <h3>ITIL® Foundation Certificate in IT Service Management</h3>
     </>
   )
+
+// Old programming languages
+      {/* <ul className="doubleColumn">
+      <li>Python</li>
+      <li>Java</li>
+      <li>C++</li>
+      <li>C</li>
+      <li>C#</li>
+      <li>SQL</li>
+      <li>PHP</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>PHP</li>
+      <li>ARMv8-A64</li>
+    </ul> */}
+
+// Old technical skills
+      {/* <div className="icons">
+        <div>
+        <h4>Testing-related</h4>
+        <ul>
+          <li>Automated software testing</li>
+          <li>Manual testing</li>
+          <li>Selenium WebDriver</li>
+          <li>Test plan creation</li>
+          <li>Testing documentation</li>
+        </ul>
+        </div>
+        <div>
+        <h4>Development</h4>
+        <ul>
+          <li>React</li>
+          <li>.NET</li>
+          <li>Unity engine</li>
+          <li>REST API</li>
+          <li>Relational databases</li>
+          <li>Socket programming</li>
+          <li>Secure coding practices</li>
+        </ul>
+        </div>
+        <div>
+        <h4>Others</h4>
+        <ul>
+          <li>Networks knowledge</li>
+          <li>Cryptography</li>
+          <li>Agile/Scrum</li>
+          <li>Behavior-driven development</li>
+        </ul>
+        </div>
+        
+
+      </div> */}
 
 // return (
 //   <>

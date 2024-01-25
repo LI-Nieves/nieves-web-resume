@@ -35,17 +35,18 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  /* padding: 0.6em 1.2em; */
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #d8cce4;
-  cursor: pointer;
-  transition: border-color 0.25s;
+/* h3 {
+  text-align: left;
+} */
+
+h4 {
+  /* text-align: left; */
+  /* border: 1px solid black; */
 }
+
+/* button {
+
+} */
 button:hover {
   border-color: #646cff;
   border: 1.5px solid;
@@ -60,8 +61,28 @@ button:focus-visible {
   height: auto;
   display: inline-block;
 }
-.buttonSpace {
+.langButton {
   margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.3em 0.5em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #d8cce4;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
+}
+.langButton[aria-pressed="true"] {
+  border-color: #646cff;
+  border: 1.5px solid;
+  background-color: #a174ce;
+}
+
+p > .progLangDesc {
+  /* background-color: beige; */
+  text-align: left;
 }
 
 @media (prefers-color-scheme: light) {
