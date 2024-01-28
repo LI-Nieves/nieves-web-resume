@@ -1,8 +1,24 @@
-# React + Vite
+# Lee Nieves' personal portfolio website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my website! Feel free to scroll through and learn about myself and my experiences.
 
-Currently, two official plugins are available:
+I built this website for a few reasons:
+- Practice web development, particularly using the React library
+- Be able to showcase my experiences in projects in my own way, rather than being constricted to a concise resume or LinkedIn's UI
+- Work on a solo project
+I am the sole contributor to my website. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Currently, it's a static website that only shows my resume information. I would like to expand it when I get the chance.
+
+## TODO, for now
+- Refactoring to compartmentalize my work, education, and projects section
+- Navbar frozen at the top for each section
+- Add additional info + photos
+
+## TODO, for later
+- Complete the website so that it's generally presentable with accurate information.
+- Make sure that it's responsive and have good accessibility.
+- Set it up on GitHub pages instead (maybe).
+- Clean the code and make sure it's documented and without redundancy.
+- Make it a dynamic website with a database, rather than having my information in hard-coded JSON objects.
+- Add other parts to my website (showcase assignments, LaTeX creations, etc.)

@@ -18,6 +18,7 @@ const PROGRAM_LANG = [
   { id: "pl-10", name: "CSS", proficiency: "Comfortable", desc: "CSS description."},
   { id: "pl-11", name: "JavaScript", proficiency: "Comfortable", desc: "JavaScript description."},
   { id: "pl-12", name: "ARMv8", proficiency: "Capable", desc: "ARMv8 description."},
+  { id: "pl-13", name: "LaTeX", proficiency: "Confident", desc: "LaTeX description."},
 ]
 
 const TECH_SKILLS = [
@@ -39,8 +40,36 @@ const TECH_SKILLS = [
   { id: "ts-16", name: "Behavior-driven development", type: "others"},
 ]
 
+const SOFTWARE = [
+  { id: "sw-01", name: "Git", type: "dev"},
+  { id: "sw-02", name: "Jira", type: "collab"},
+  { id: "sw-03", name: "Windows", type: "os"},
+  { id: "sw-04", name: "macOS", type: "os"},
+  { id: "sw-05", name: "Linux", type: "os"},
+  { id: "sw-06", name: "Confluence", type: "collab"},
+  { id: "sw-07", name: "Slack", type: "collab"},
+  { id: "sw-08", name: "Package managers (npm)", type: "dev"},
+  { id: "sw-09", name: "VMWare/virtual machines", type: "testing"},
+  { id: "sw-10", name: "Remote desktop", type: "testing"},
+  { id: "sw-11", name: "VS Code", type: "dev"},
+  { id: "sw-12", name: "IntelliJ", type: "dev"},
+  { id: "sw-13", name: "Eclipse", type: "dev"},
+  { id: "sw-14", name: "Visual Studio", type: "dev"},
+  { id: "sw-15", name: "Postman", type: "testing"},
+  { id: "sw-16", name: "Figma", type: "others"},
+  { id: "sw-17", name: "ServiceNow", type: "others"},
+  { id: "sw-18", name: "Spotfire", type: "others"},
+  { id: "sw-19", name: "Microsoft Office suite", type: "others"},
+]
+
+const SPEAK = [
+  { id: "sk-01", name: "English", comp: "Fluent", verbal: "Fluent" },
+  { id: "sk-02", name: "French", comp: "Intermediate", verbal: "Intermediate" },
+  { id: "sk-03", name: "Tagalog (Filipino)", comp: "Fluent", verbal: "Basic" },
+]
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App program_lang={PROGRAM_LANG} tech_skills={TECH_SKILLS}/>
+    <App program_lang={PROGRAM_LANG} tech_skills={TECH_SKILLS} software={SOFTWARE} speak={SPEAK}/>
   </React.StrictMode>,
 )

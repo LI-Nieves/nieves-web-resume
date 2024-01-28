@@ -1,10 +1,18 @@
 function LangButton(props) {
+    function btnClick(props) {
+        console.log(props.type);
+        if (props.desc) {
+            props.setLang(props);
+        } else {
+            props.setSpeak(props);
+        }
+    }
     return (
         <>
             <button 
                 className="langButton" 
                 aria-pressed={props.isPressed}
-                onClick={()=> props.setLang(props)}
+                onClick={()=> btnClick(props)}
             >
                 {props.name}
             </button>

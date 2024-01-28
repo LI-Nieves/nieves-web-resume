@@ -1,7 +1,7 @@
 function Skill(props) {
     return (
         <>
-            <li class="list-group-item">{props.name}</li>
+            <li className="list-group-item">{props.name}</li>
         </>
     )
 }

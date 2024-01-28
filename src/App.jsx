@@ -9,9 +9,12 @@ function App(props) {
   // data
   const PROGRAM_LANG = props.program_lang;
   const TECH_SKILLS = props.tech_skills;
+  const SOFTWARE = props.software;
+  const SPEAK = props.speak;
 
   // states
   const [lang, setLang] = useState(0);
+  const [speak, setSpeak] = useState(0);
 
   // For programming languages functionality
   const programmingLanguages = PROGRAM_LANG.map((l) => (
@@ -26,15 +29,16 @@ function App(props) {
   ))
 
   let langDesc;
+  const langHelp = "Click on the buttons for more information. Proficiency levels: Confident > Comfortable > Capable.";
   if (lang === 0) {
     langDesc = "";
   } else {
     langDesc = `Proficiency: ${lang.proficiency}. ${lang.desc}`;
-  }
+  }  
 
-  // For tech skills functionality
-  function makeSkills(type) {
-    return TECH_SKILLS
+  // For tech skills + software functionality
+  function makeSkills(data,type) {
+    return data
       .filter((s) => s.type === type)
       .map((s) => (
         <Skill
@@ -44,9 +48,79 @@ function App(props) {
       ))
   }
 
+  // For spoken language functionality
+  const spokenLang = SPEAK.map((l) => (
+    <LangButton
+      key={l.id}
+      name={l.name}
+      comp={l.comp}
+      verbal={l.verbal}
+      isPressed={l.name === speak.name}
+      setSpeak={setSpeak}
+      />
+  ))
+
+  let speakDesc;
+  if (speak === 0) {
+    speakDesc = "";
+  } else {
+    speakDesc = `Comprehension proficiency: ${speak.comp}.\n Verbal/written proficiency: ${speak.verbal}.`;
+  }
+
   return (
     <>
-      <h1>Lee Nieves</h1>
+      {/* <nav class="navbar fixed-top bg-body-tertiary" id="nav-bar-custom">
+        <div class="container-fluid">
+          <div className="navbar-nav">
+                <a class="nav-link acthttp://162.157.118.78:26357/gameive" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          </div>
+        </div>
+      </nav> */}
+
+      {/* <nav class="navbar navbar-expand-lg bg-body-tertiary" id="nav-bar-custom">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#home">Welcome!</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="navbar-nav">
+              <a class="nav-link" aria-current="page" href="#skills">Skills</a>
+              <a class="nav-link" aria-current="page" href="#experience">Work Experience</a>
+              <a class="nav-link" aria-current="page" href="#education">Education</a>
+              <a class="nav-link" aria-current="page" href="#projects">Projects</a>
+              <a class="nav-link" aria-current="page" href="#licenses">Licenses & Certifications</a>
+              <a class="nav-link" aria-current="page" href="#volunteer">Volunteering</a>
+              <a class="nav-link" aria-current="page" href="#interests">Interests</a>
+            </div>
+        </div>
+      </nav> */}
+
+      {/* <div id="nav-bar-custom">
+        <div>
+          <a href="#home">Home</a>
+        </div>
+        <div>
+          <a href="#skills">Skills</a>
+        </div>
+        <div>
+          <a href="default.asp">Work</a>
+        </div>
+        <div>
+          <a href="default.asp">Education</a>
+        </div>
+        <div>
+          <a href="#projects">Projects</a>
+        </div>
+        <div>
+          <a href="default.asp">Licenses</a>
+        </div>
+      </div> */}
+      
+
+      <h1 id="home">Lee Nieves</h1>
 
       <div className="bio">
         <div className="picture">
@@ -57,106 +131,165 @@ function App(props) {
             and a minor in Biological Sciences.</p>
           <p>I love programming and problem-solving. So far, my professional interests include software development, 
             software testing and quality assurance, and cybersecurity. </p>
-          <p>For business inquiries, feel free to reach out at <a href="mailto:Nieves.L@outlook.com" title="mailto:Nieves.L@outlook.com">Nieves.L@outlook.com</a>. 
+          <p>For inquiries, feel free to reach out at <a href="mailto:Nieves.L@outlook.com" title="mailto:Nieves.L@outlook.com">Nieves.L@outlook.com</a>. 
             Also, check out my <i className="bi bi-github"></i> <a href="https://www.github.com/LI-Nieves" title="Redirect to github.com/LI-Nieves">
               GitHub</a> and <i className="bi bi-linkedin"></i> <a href="https://www.linkedin.com/in/lana-nieves/" title="Redirect to linkedin.com/in/lana-nieves/">
               LinkedIn</a>!</p>
         </div>    
       </div>
 
-      <h2>Skills</h2>
+      <h2 id="skills">Skills</h2>
 
-      <h3>Programming languages</h3>
+      <h3 className="skill title">Programming languages</h3>
+      {langHelp}
+      <br></br>
       {programmingLanguages}
       <br></br> <br></br>
-      <p className="progLangDesc">{langDesc}</p>
+      <p className="langDesc">{langDesc}</p>
+      <br></br>
 
-
-      <h3>Technical skills</h3>
+      <h3 className="skill title">Technical skills</h3>
       {/* Card source: https://getbootstrap.com/docs/5.3/components/card/ */}
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card">
-            <div class="card-header">Testing</div>
-                <ul class="list-group list-group-flush">
-                  {makeSkills("testing")}
+      <div className="row row-cols-1 row-cols-md-3 g-4">
+        <div className="col">
+          <div className="card">
+            <div className="card-header">Testing</div>
+                <ul className="list-group list-group-flush">
+                  {makeSkills(TECH_SKILLS,"testing")}
                 </ul>
           </div>
         </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-header">Development</div>
-              <ul class="list-group list-group-flush">
-                {makeSkills("dev")}
+        <div className="col">
+          <div className="card">
+            <div className="card-header">Development</div>
+              <ul className="list-group list-group-flush">
+                {makeSkills(TECH_SKILLS,"dev")}
               </ul>
           </div>
         </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-header">Others</div>
-              <ul class="list-group list-group-flush">
-                {makeSkills("others")}
+        <div className="col">
+          <div className="card">
+            <div className="card-header">Others</div>
+              <ul className="list-group list-group-flush">
+                {makeSkills(TECH_SKILLS,"others")}
               </ul>
           </div>
         </div>
       </div>
       <br></br>
 
-      <h3>Software</h3>
-      <ul className="doubleColumn">
-        <li>Git</li>
-        <li>Jira</li>
-        <li>Windows</li>
-        <li>macOS</li>
-        <li>Linux</li>
-        <li>Confluence</li>
-        <li>Slack</li>
-        <li>Package managers (npm)</li>
-        <li>VMWare/virtual machines</li>
-        <li>remote desktop</li>
-        <li>VS Code</li>
-        <li>IntelliJ</li>
-        <li>Eclipse</li>
-        <li>Visual Studio</li>
-        <li>Postman</li>
-        <li>Figma</li>
-        <li>ServiceNow</li>
-        <li>Spotfire</li>
-        <li>Microsoft Office suite</li>
-      </ul>
+      <h3 className="skill title">Software</h3>
+      <div className="row row-cols-1 row-cols-md-5 g-4">
+        <div className="col">
+          <div className="card">
+            <div className="card-header">Testing</div>
+                <ul className="list-group list-group-flush">
+                  {makeSkills(SOFTWARE,"testing")}
+                </ul>
+          </div>
+        </div>
+        <div className="col">
+          <div className="card">
+            <div className="card-header">Development</div>
+              <ul className="list-group list-group-flush">
+                {makeSkills(SOFTWARE,"dev")}
+              </ul>
+          </div>
+        </div>
+        <div className="col">
+          <div className="card">
+            <div className="card-header">Operating systems</div>
+              <ul className="list-group list-group-flush">
+                {makeSkills(SOFTWARE,"os")}
+              </ul>
+          </div>
+        </div>
+        <div className="col">
+          <div className="card">
+            <div className="card-header">Collaboration</div>
+              <ul className="list-group list-group-flush">
+                {makeSkills(SOFTWARE,"collab")}
+              </ul>
+          </div>
+        </div>
+        <div className="col">
+          <div className="card">
+            <div className="card-header">Others</div>
+              <ul className="list-group list-group-flush">
+                {makeSkills(SOFTWARE,"others")}
+              </ul>
+          </div>
+        </div>
+      </div>
+      <br></br>
 
-      <h3>Languages</h3>
-      <ul>
-        <li>English</li>
-        <li>French</li>
-        <li>Tagalog</li>
-      </ul>
+      <h3 className="skill title">Languages</h3>
+      {spokenLang}
+      <br></br><br></br>
+      <p className="speakDesc">{speakDesc}</p>
+      <br></br>
 
-      <h2>Work experience</h2>
-      <h3>Quality Assurance Automation Developer Intern</h3>
-      <h4>Synopsys, full-time from May 2022 to April 2023</h4>
-      <ul>
+
+      <h2 id="experience">Work experience</h2>
+      <h3 className="work title">Quality Assurance Automation Developer Intern</h3>
+      <h4 className="work sub">
+        <p>
+          <i className="bi bi-geo-alt-fill"></i> Synopsys &emsp;
+          <i className="bi bi-calendar-date-fill"></i> May 2022 to Apr 2023, full-time
+        </p>
+      </h4>
+      <ul className="work">
         <li>Developed on an automated UI software testing framework in Java with OpenCV, Tesseract OCR, and WinAppDriver for the Code Sight IDE plug-in for Visual Studio, IntelliJ, Visual Studio Code, and Eclipse</li>
         <li>Led 2 features as primary QA contact for 8 months: wrote test plan, triaged bugs, verified tickets, wrote tests</li>
         <li>Triaged and debugged 4+ regression test suites, conducted manual tests, and collaborated with developers</li>
       </ul>
-      <h3>Service Integration & Automation Intern</h3>
-      <h4>Husky Energy & Cenovus Energy, full-time from September 2020 to August 2021</h4>
-      <ul>
+
+      <h3 className="work title">Service Integration & Automation Intern</h3>
+      <h4 className="work sub">
+        <p>
+          <i className="bi bi-geo-alt-fill"></i> Husky Energy & Cenovus Energy &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Sep 2020 to Aug 2021, full-time
+        </p>
+      </h4>
+      <ul className="work">
         <li>Oversaw all teams in IT, creating reports and dashboards to ensure efficient and cost-saving performance</li>
         <li>Saved the company ~$120k per month, worked in ServiceNow back-end to facilitate cross-company access </li>
       </ul>
-      <h3>Crew Member (Cashier)</h3>
-      <h4>Wendy’s, part-time from July 2017 to August 2020</h4>
-      <h3>Special-needs Caregiver</h3>
-      <h4>Self-employed, full-time from January 2016 to present</h4>
-      <h3>Special-needs Martial Arts Instructor</h3>
-      <h4>Hydra Martial Arts, part-time from January 2016 to June 2017</h4>
 
-      <h2>Education</h2>
-      <h3>B.Sc in Computer Science with Distinction and a minor in Biological Sciences</h3>
-      <h4>University of Calgary, from September 2017 to April 2023</h4>
-      <ul>
+      <h3 className="work title">Crew Member (Cashier)</h3>
+      <h4 className="work sub">
+        <p>
+          <i className="bi bi-geo-alt-fill"></i> Wendy’s &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Jul 2017 to Aug 2020, part-time
+        </p>
+      </h4>
+
+      <h3 className="work title">Special-needs Caregiver</h3>
+      <h4 className="work sub">
+        <p>
+          <i className="bi bi-geo-alt-fill"></i> Self-employed &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Jan 2016 to present, part-time
+        </p>
+      </h4>
+
+      <h3 className="work title">Special-needs Martial Arts Instructor</h3>
+      <h4 className="work sub">
+        <p>
+          <i className="bi bi-geo-alt-fill"></i> Hydra Martial Arts &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Jan 2016 to Jun 2017, part-time
+        </p>
+      </h4>
+
+      <h2 id="education">Education</h2>
+
+      <h3 className="work title">B.Sc in Computer Science with Distinction and a minor in Biological Sciences</h3>
+      <h4 className="work sub">
+        <p>
+          <i className="bi bi-geo-alt-fill"></i> University of Calgary &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Sep 2017 to Apr 2023
+        </p>
+      </h4>
+      <ul className="work">
         <li>Candidate of the Science Internship Program (two full-time, 12-month internships)</li>
         <li>Concentration in Information Security</li>
         <li>Cumulative GPA: 3.90/4.00</li>
@@ -164,102 +297,148 @@ function App(props) {
         <li>Selected coursework: Data Structures and Algorithms, Networks Security, Computer Security, Operating Systems, Database Management Systems, Computing Machinery, Statistics</li>
       </ul>
 
-      <h2>Notable projects and hack-a-thons</h2>
-      <h3>SpeeDine</h3>
-      <h4>Developed in HTML, CSS, and the Blazor framework (C#) using object-oriented design, from Jan 2022 to April 2022</h4>
-      <ul>
+      <h2 id="projects">Projects</h2>
+
+      <h3 className="work title">Personal portfolio website</h3>
+      <h4 className="work sub">
+        <p>
+          <i className="bi bi-gear-wide"></i> Developed in HTML, CSS, JavaScript, Bootstrap library, and the React library &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Jan 2024 &emsp;
+          <i className="bi bi-github"></i> <a href="https://github.com/LI-Nieves/nieves-web-resume" title="https://github.com/LI-Nieves/nieves-web-resume">GitHub</a> &emsp;
+          <i className="bi bi-link-45deg"></i> <a href="https://nieves.netlify.app" title="https://nieves.netlify.app">https://nieves.netlify.app</a>
+        </p>
+      </h4>
+      <ul className="work">
+        <li>It's this website that you're on right now</li>
+        <li>Worked independently on designing, developing, and documenting the website</li>
+      </ul>
+
+      <h3 className="work title">SpeeDine</h3>
+      <h4 className="work sub">
+        <p>
+          <i className="bi bi-gear-wide"></i> Developed in HTML, CSS, and the Blazor framework (C#) using object-oriented design &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Jan 2022 to Apr 2022 &emsp;
+          <i className="bi bi-github"></i> <a href="https://github.com/alyssulee/SpeeDine" title="https://github.com/alyssulee/SpeeDine">GitHub</a>
+        </p>
+      </h4>
+      <ul className="work">
         <li>Web application that optimizes dining experience; allows customers to order items through the app and more</li>
         <li>Designed and implemented the UI with Task-Centered System Design principles and prototyping</li>
       </ul>
-      <h3>Hotel Management website</h3>
-      <h4>Developed using PHP, CSS, HTML, and JavaScript; connected to a MySQL database</h4>
-      <ul>
+
+      <h3 className="work title">Randomness Generation research-based project</h3>
+      <h4 className="work sub">
+        <p>
+          <i className="bi bi-gear-wide"></i> Developed using .NET framework and Python &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Sep 2021 to Dec 2021 &emsp;
+          <i className="bi bi-github"></i> <a href="https://github.com/LI-Nieves/CPSC530-Group-1-Project" title="https://github.com/LI-Nieves/CPSC530-Group-1-Project">GitHub</a>
+        </p>
+      </h4>
+      <ul className="work">
+        <li>Determined whether human gameplay can be used to extract true randomness</li>
+      </ul>
+
+      <h3 className="work title">Educational Waste website</h3>
+      <h4 className="work sub">
+        <p>
+          <i className="bi bi-gear-wide"></i> CalgaryHacks 2021, 24h hack-a-thon &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Fep 2021 &emsp;
+          <i className="bi bi-github"></i> <a href="https://github.com/LI-Nieves/Garbage-Website" title="https://github.com/LI-Nieves/Garbage-Website">GitHub</a>
+        </p>
+      </h4>
+      <ul className="work">
+        <li>Web-based game developed to teach people how to properly recycle and compost</li>
+      </ul>
+
+      <h3 className="work title">Hotel Management website</h3>
+      <h4 className="work sub">
+        <p>
+          <i className="bi bi-gear-wide"></i> Developed using PHP, CSS, HTML, and JavaScript; connected to a MySQL database &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Jan 2021 to Apr 2021 &emsp;
+          <i className="bi bi-github"></i> <a href="https://github.com/LI-Nieves/hotel-mgmt-website" title="https://github.com/LI-Nieves/hotel-mgmt-website">GitHub</a>
+        </p>
+      </h4>
+      <ul className="work">
         <li>Website with guest functionality (e.g., reserve room) and employee functionality (e.g., view room status)</li>
         <li>Prevented SQL injections while developing the back-end through secure coding practices </li>
       </ul>
 
-      <h2>LICENSES & CERTIFICATIONS</h2>
-      <h3>ITIL® Foundation Certificate in IT Service Management</h3>
+      <h3 className="work title">Scholarship Manager software</h3>
+      <h4 className="work sub">
+        <p>
+          <i className="bi bi-gear-wide"></i> Developed in Java using object-oriented design &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Jan 2020 to Apr 2020 &emsp;
+          <i className="bi bi-github"></i> <a href="https://github.com/LI-Nieves/Scholarship-Manager" title="https://github.com/LI-Nieves/Scholarship-Manager">GitHub</a>
+        </p>
+      </h4>
+      <ul className="work">
+        <li>Software with student functionality (e.g., apply for scholarship) and delegator functionality (e.g., choose winner)</li>
+        <li>Led the project by facilitating meetings and developing the entire back-end </li>
+      </ul>
+
+      <h3 className="work title">Immersive Emotica</h3>
+      <h4 className="work sub">
+        <p>
+          <i className="bi bi-gear-wide"></i> Developed in C# using the Unity Engine for Innovation4Health’s Health Hackathon 2019 &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Oct 2019 to Nov 2019 &emsp;
+          <i className="bi bi-github"></i> <a href="https://github.com/LI-Nieves/Emotional-Training-AR" title="https://github.com/LI-Nieves/Emotional-Training-AR">GitHub</a>
+        </p>
+      </h4>
+      <ul className="work">
+        <li>Created a 3D game that is an AR-based implementation of emotional training for children with autism</li>
+        <li>Demonstrated quick learning and teamwork, learning the Unity Engine and how to apply AR into project</li>
+      </ul>
+
+      <h3 className="work title">Space Ranch</h3>
+      <h4 className="work sub">
+        <p>
+          <i className="bi bi-gear-wide"></i> Developed in Java using object-oriented design &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Jan 2019 to Apr 2019 &emsp;
+          <i className="bi bi-github"></i> <a href="https://github.com/LI-Nieves/Space-Ranch" title="https://github.com/LI-Nieves/Space-Ranch">GitHub</a>
+        </p>
+      </h4>
+      <ul className="work">
+        <li>A turn-based strategy game based on Into the Breach with a playable UI</li>
+        <li>Implemented the UI and collaborated with those who worked on the back-end</li>
+      </ul>
+
+      <h2 id="licenses">Licenses & Certifications</h2>
+      <h3 className="work title">ITIL® Foundation Certificate in IT Service Management</h3>
+      <p className="work">
+        <i className="bi bi-calendar-date-fill"></i> Apr 2021
+      </p>
+
+      <h2 id="volunteer">Volunteering</h2>
+
+      <h3 className="work title">Campus volunteer</h3>
+      <h4 className="work sub">
+        <p>
+        <i className="bi bi-geo-alt-fill"></i> University of Calgary &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Jun 2017 to Jun 2018
+        </p>
+      </h4>
+
+      <h3 className="work title">Martial arts instructor</h3>
+      <h4 className="work sub">
+        <p>
+        <i className="bi bi-geo-alt-fill"></i> Hydra Martial Arts &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Jan 2016 to Jun 2017
+        </p>
+      </h4>
+
+      <h3 className="work title">General volunteer</h3>
+      <h4 className="work sub">
+        <p>
+        <i className="bi bi-geo-alt-fill"></i> Forester's &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Oct 2014 to Oct 2017
+        </p>
+      </h4>
+
+      <h2 id="interests">Interests</h2>
+      <p>PC building, video games, D&D, running/racing, crocheting, Rubik’s puzzles, sitcoms, anime, art, piano </p>
+
     </>
   )
-
-// Old programming languages
-      {/* <ul className="doubleColumn">
-      <li>Python</li>
-      <li>Java</li>
-      <li>C++</li>
-      <li>C</li>
-      <li>C#</li>
-      <li>SQL</li>
-      <li>PHP</li>
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>JavaScript</li>
-      <li>PHP</li>
-      <li>ARMv8-A64</li>
-    </ul> */}
-
-// Old technical skills
-      {/* <div className="icons">
-        <div>
-        <h4>Testing-related</h4>
-        <ul>
-          <li>Automated software testing</li>
-          <li>Manual testing</li>
-          <li>Selenium WebDriver</li>
-          <li>Test plan creation</li>
-          <li>Testing documentation</li>
-        </ul>
-        </div>
-        <div>
-        <h4>Development</h4>
-        <ul>
-          <li>React</li>
-          <li>.NET</li>
-          <li>Unity engine</li>
-          <li>REST API</li>
-          <li>Relational databases</li>
-          <li>Socket programming</li>
-          <li>Secure coding practices</li>
-        </ul>
-        </div>
-        <div>
-        <h4>Others</h4>
-        <ul>
-          <li>Networks knowledge</li>
-          <li>Cryptography</li>
-          <li>Agile/Scrum</li>
-          <li>Behavior-driven development</li>
-        </ul>
-        </div>
-        
-
-      </div> */}
-
-// return (
-//   <>
-//     <div>
-//       <a href="https://vitejs.dev" target="_blank">
-//         <img src={viteLogo} className="logo" alt="Vite logo" />
-//       </a>
-//       <a href="https://react.dev" target="_blank">
-//         <img src={reactLogo} className="logo react" alt="React logo" />
-//       </a>
-//     </div>
-//     <h1>Vite + React</h1>
-//     <div className="card">
-//       <button onClick={() => setCount((count) => count + 1)}>
-//         count is {count}
-//       </button>
-//       <p>
-//         Edit <code>src/App.jsx</code> and save to test HMR
-//       </p>
-//     </div>
-//     <p className="read-the-docs">
-//       Click on the Vite and React logos to learn more
-//     </p>
-//   </>
-// )
 
 }
 

@@ -30,23 +30,6 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-/* h3 {
-  text-align: left;
-} */
-
-h4 {
-  /* text-align: left; */
-  /* border: 1px solid black; */
-}
-
-/* button {
-
-} */
 button:hover {
   border-color: #646cff;
   border: 1.5px solid;
@@ -72,17 +55,23 @@ button:focus-visible {
   background-color: #d8cce4;
   cursor: pointer;
   transition: border-color 0.25s;
-  /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
 }
 .langButton[aria-pressed="true"] {
   border-color: #646cff;
   border: 1.5px solid;
   background-color: #a174ce;
 }
-
-p > .progLangDesc {
-  /* background-color: beige; */
-  text-align: left;
+.langDesc {
+  background-color: rgb(247, 244, 244);
+  border-radius: 8px;
+  width: 30%;
+  margin: auto;
+}
+.speakDesc {
+  background-color: rgb(247, 244, 244);
+  border-radius: 8px;
+  width: 50%;
+  margin: auto;
 }
 
 @media (prefers-color-scheme: light) {
