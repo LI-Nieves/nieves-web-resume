@@ -309,7 +309,7 @@ function App(props) {
         </p>
       </h4>
       <ul className="work">
-        <li>It's this website that you're on right now</li>
+        <li>It's the website that you're on right now!</li>
         <li>Worked independently on designing, developing, and documenting the website</li>
       </ul>
 
@@ -342,7 +342,7 @@ function App(props) {
       <h4 className="work sub">
         <p>
           <i className="bi bi-gear-wide"></i> CalgaryHacks 2021, 24h hack-a-thon &emsp;
-          <i className="bi bi-calendar-date-fill"></i> Fep 2021 &emsp;
+          <i className="bi bi-calendar-date-fill"></i> Feb 2021 &emsp;
           <i className="bi bi-github"></i> <a href="https://github.com/LI-Nieves/Garbage-Website" title="https://github.com/LI-Nieves/Garbage-Website">GitHub</a>
         </p>
       </h4>
