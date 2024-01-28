@@ -21,4 +21,4 @@ Currently, it's a static website that only shows my resume information. I would 
 - Set it up on GitHub pages instead (maybe).
 - Clean the code and make sure it's documented and without redundancy.
 - Make it a dynamic website with a database, rather than having my information in hard-coded JSON objects.
-- Add other parts to my website (showcase assignments, LaTeX creations, etc.)
+- Add other parts to my website (showcase assignments, LaTeX creations, etc.)git a
