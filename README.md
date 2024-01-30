@@ -14,6 +14,7 @@ Currently, it's a static website that only shows my resume information. I would 
 - Refactoring to compartmentalize my work, education, and projects section
 - Navbar frozen at the top for each section
 - Add additional info + photos
+- Change favicon
 
 ## TODO, for later
 - Complete the website so that it's generally presentable with accurate information.
