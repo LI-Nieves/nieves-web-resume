@@ -29,7 +29,7 @@ function App(props) {
   ))
 
   let langDesc;
-  const langHelp = "Click on the buttons for more information. Proficiency levels: Confident > Comfortable > Capable.";
+  const langHelp = "Click on the buttons for more information. Proficiency levels: (highest) Confident > Comfortable > Capable (lowest).";
   if (lang === 0) {
     langDesc = "";
   } else {
@@ -311,6 +311,7 @@ function App(props) {
       <ul className="work">
         <li>It's the website that you're on right now!</li>
         <li>Worked independently on designing, developing, and documenting the website</li>
+        <li>Used React components to improve code readability</li>
       </ul>
 
       <h3 className="work title">SpeeDine</h3>
@@ -318,7 +319,7 @@ function App(props) {
         <p>
           <i className="bi bi-gear-wide"></i> Developed in HTML, CSS, and the Blazor framework (C#) using object-oriented design &emsp;
           <i className="bi bi-calendar-date-fill"></i> Jan 2022 to Apr 2022 &emsp;
-          <i className="bi bi-github"></i> <a href="https://github.com/alyssulee/SpeeDine" title="https://github.com/alyssulee/SpeeDine">GitHub</a>
+          <i className="bi bi-github"></i> <a href="https://github.com/LI-Nieves/SpeeDine" title="https://github.com/LI-Nieves/SpeeDine">GitHub</a>
         </p>
       </h4>
       <ul className="work">
@@ -331,24 +332,24 @@ function App(props) {
         <p>
           <i className="bi bi-gear-wide"></i> Developed using .NET framework and Python &emsp;
           <i className="bi bi-calendar-date-fill"></i> Sep 2021 to Dec 2021 &emsp;
-          <i className="bi bi-github"></i> <a href="https://github.com/LI-Nieves/CPSC530-Group-1-Project" title="https://github.com/LI-Nieves/CPSC530-Group-1-Project">GitHub</a>
+          <i className="bi bi-github"></i> <a href="https://github.com/LI-Nieves/Can-Human-Gameplay-Extract-TRNG" title="https://github.com/LI-Nieves/Can-Human-Gameplay-Extract-TRNG">GitHub</a>
         </p>
       </h4>
       <ul className="work">
         <li>Determined whether human gameplay can be used to extract true randomness</li>
       </ul>
 
-      <h3 className="work title">Educational Waste website</h3>
+      {/* <h3 className="work title">Educational Waste website</h3>
       <h4 className="work sub">
         <p>
-          <i className="bi bi-gear-wide"></i> CalgaryHacks 2021, 24h hack-a-thon &emsp;
+          <i className="bi bi-gear-wide"></i> Developed using Django framework (Python) & HTML, CSS, JavaScript; connected to a Firebase database for CalgaryHacks 2021, 24h hack-a-thon &emsp;
           <i className="bi bi-calendar-date-fill"></i> Feb 2021 &emsp;
           <i className="bi bi-github"></i> <a href="https://github.com/LI-Nieves/Garbage-Website" title="https://github.com/LI-Nieves/Garbage-Website">GitHub</a>
         </p>
       </h4>
       <ul className="work">
         <li>Web-based game developed to teach people how to properly recycle and compost</li>
-      </ul>
+      </ul> */}
 
       <h3 className="work title">Hotel Management website</h3>
       <h4 className="work sub">

@@ -6,19 +6,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const PROGRAM_LANG = [
-  { id: "pl-01", name: "Java", proficiency: "Confident", desc: "Used at Synopsys and for several projects."},
-  { id: "pl-02", name: "Python", proficiency: "Confident", desc: "Python description."},
-  { id: "pl-03", name: "C++", proficiency: "Capable", desc: "C++ description."},
-  { id: "pl-04", name: "C", proficiency: "Capable", desc: "C description."},
-  { id: "pl-05", name: "C#", proficiency: "Comfortable", desc: "C# description."},
-  { id: "pl-06", name: "SQL", proficiency: "Comfortable", desc: "SQL description."},
-  { id: "pl-07", name: "PHP", proficiency: "Comfortable", desc: "PHP description."},
-  { id: "pl-08", name: "Haskell", proficiency: "Capable", desc: "Haskell description."},
-  { id: "pl-09", name: "HTML", proficiency: "Comfortable", desc: "HTML description."},
-  { id: "pl-10", name: "CSS", proficiency: "Comfortable", desc: "CSS description."},
-  { id: "pl-11", name: "JavaScript", proficiency: "Comfortable", desc: "JavaScript description."},
-  { id: "pl-12", name: "ARMv8", proficiency: "Capable", desc: "ARMv8 description."},
-  { id: "pl-13", name: "LaTeX", proficiency: "Confident", desc: "LaTeX description."},
+  { id: "pl-01", name: "Java", proficiency: "Confident", desc: "Used at Synopsys and in two projects."},
+  { id: "pl-02", name: "Python", proficiency: "Confident", desc: "Used for my Randomness Generation project and socket programming."},
+  { id: "pl-03", name: "C++", proficiency: "Capable", desc: "Used in several classes. Also used for multi-threaded programs."},
+  { id: "pl-04", name: "C", proficiency: "Capable", desc: "Used in several classes. Also used for socket programming."},
+  { id: "pl-05", name: "C#", proficiency: "Comfortable", desc: "Used in three projects."},
+  { id: "pl-06", name: "SQL", proficiency: "Comfortable", desc: "Used in Hotel Management website to build a database."},
+  { id: "pl-07", name: "PHP", proficiency: "Comfortable", desc: "Used in Hotel Management website to build the back-end of a website."},
+  { id: "pl-08", name: "Haskell", proficiency: "Capable", desc: "Used to learn functional programming."},
+  { id: "pl-09", name: "HTML", proficiency: "Comfortable", desc: "Used in 3 projects."},
+  { id: "pl-10", name: "CSS", proficiency: "Comfortable", desc: "Used in 3 projects."},
+  { id: "pl-11", name: "JavaScript", proficiency: "Comfortable", desc: "Used in 2 projects."},
+  { id: "pl-12", name: "ARMv8-A64", proficiency: "Capable", desc: "Used to learn low-level coding."},
+  { id: "pl-13", name: "LaTeX", proficiency: "Confident", desc: "Used often, to create assignments and reports."},
 ]
 
 const TECH_SKILLS = [
