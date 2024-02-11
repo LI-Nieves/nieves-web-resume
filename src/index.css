@@ -64,13 +64,11 @@ button:focus-visible {
 .langDesc {
   background-color: rgb(247, 244, 244);
   border-radius: 8px;
-  width: 30%;
   margin: auto;
 }
 .speakDesc {
   background-color: rgb(247, 244, 244);
   border-radius: 8px;
-  width: 42%;
   margin: auto;
 }
 

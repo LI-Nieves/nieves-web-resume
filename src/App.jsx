@@ -2,7 +2,7 @@ import { useState } from 'react'
 import picOfMe from './assets/me.png'
 import './App.css'
 import LangButton from './components/LangButton'
-import Skill from './components/Skill'
+import SkillGroup from './components/SkillGroup'
 
 
 function App(props) {
@@ -37,16 +37,23 @@ function App(props) {
   }  
 
   // For tech skills + software functionality
-  function makeSkills(data,type) {
-    return data
-      .filter((s) => s.type === type)
-      .map((s) => (
-        <Skill
-          key={s.id}
-          name={s.name}
-          />
-      ))
-  }
+  const techSkillLength = `row row-cols-1 row-cols-md-${TECH_SKILLS.length} g-4`;
+  const techSkills = TECH_SKILLS.map((s) => (
+    <SkillGroup
+      key = {s.id}
+      title = {s.title}
+      skills = {s.skills}
+    />
+  ));
+
+  const softwareLength = `row row-cols-1 row-cols-md-${SOFTWARE.length} g-4`;
+  const softwareSkills = SOFTWARE.map((s) => (
+    <SkillGroup
+      key = {s.id}
+      title = {s.title}
+      skills = {s.skills}
+    />
+  ));
 
   // For spoken language functionality
   const spokenLang = SPEAK.map((l) => (
@@ -122,6 +129,7 @@ function App(props) {
 
       <h1 id="home">Lee Nieves</h1>
 
+      {/* Section: Biography */}
       <div className="bio">
         <div className="picture">
           <img src={picOfMe} className="picOfMe" alt="An incredibly flattering photo of Lee"></img>
@@ -138,96 +146,38 @@ function App(props) {
         </div>    
       </div>
 
+      {/* Section: Skills */}
       <h2 id="skills">Skills</h2>
 
+      {/* Subsection: Programming languages */}
       <h3 className="skill title">Programming languages</h3>
       {langHelp}
       <br></br>
       {programmingLanguages}
       <br></br> <br></br>
-      <p className="langDesc">{langDesc}</p>
-      <br></br>
+      <span className="langDesc">{langDesc}</span>
+      <br></br><br></br>
 
+      {/* Subsection: Technical skills */}
       <h3 className="skill title">Technical skills</h3>
-      {/* Card source: https://getbootstrap.com/docs/5.3/components/card/ */}
-      <div className="row row-cols-1 row-cols-md-3 g-4">
-        <div className="col">
-          <div className="card">
-            <div className="card-header">Testing</div>
-                <ul className="list-group list-group-flush">
-                  {makeSkills(TECH_SKILLS,"testing")}
-                </ul>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card">
-            <div className="card-header">Development</div>
-              <ul className="list-group list-group-flush">
-                {makeSkills(TECH_SKILLS,"dev")}
-              </ul>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card">
-            <div className="card-header">Others</div>
-              <ul className="list-group list-group-flush">
-                {makeSkills(TECH_SKILLS,"others")}
-              </ul>
-          </div>
-        </div>
+      <div className={techSkillLength}>
+        {techSkills}
       </div>
       <br></br>
 
+      {/* Subsection: Software */}
       <h3 className="skill title">Software</h3>
-      <div className="row row-cols-1 row-cols-md-5 g-4">
-        <div className="col">
-          <div className="card">
-            <div className="card-header">Testing</div>
-                <ul className="list-group list-group-flush">
-                  {makeSkills(SOFTWARE,"testing")}
-                </ul>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card">
-            <div className="card-header">Development</div>
-              <ul className="list-group list-group-flush">
-                {makeSkills(SOFTWARE,"dev")}
-              </ul>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card">
-            <div className="card-header">Operating systems</div>
-              <ul className="list-group list-group-flush">
-                {makeSkills(SOFTWARE,"os")}
-              </ul>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card">
-            <div className="card-header">Collaboration</div>
-              <ul className="list-group list-group-flush">
-                {makeSkills(SOFTWARE,"collab")}
-              </ul>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card">
-            <div className="card-header">Others</div>
-              <ul className="list-group list-group-flush">
-                {makeSkills(SOFTWARE,"others")}
-              </ul>
-          </div>
-        </div>
+      <div className={softwareLength}>
+        {softwareSkills}
       </div>
       <br></br>
 
+      {/* Subsection: Languages */}
       <h3 className="skill title">Languages</h3>
       {spokenLang}
       <br></br><br></br>
-      <p className="speakDesc">{speakDesc}</p>
-      <br></br>
+      <span className="speakDesc">{speakDesc}</span>
+      <br></br><br></br>
 
 
       <h2 id="experience">Work experience</h2>
